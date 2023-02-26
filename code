@@ -1,0 +1,23 @@
+sum = 0
+rebra = ["AB", "AC", "AE", "BC", "BE", "CE", "BD", "EG", "ED", "DG", "GH", "DH", "DF", "FH"]
+weight = [2, 2, 7, 2, 2, 5, 9, 9, 10, 2, 17, 16, 5, 17]
+min=0
+
+stroka = "A"
+
+for k in range(len(weight)):
+    letter = ""
+    for i in range(len(weight)):
+
+        if rebra[i][0] in stroka and rebra[i][1] not in stroka and (min==0 or weight[i]<min):
+            letter = rebra[i][1]
+            min=weight[i]
+
+        if rebra[i][0] not in stroka and rebra[i][1] in stroka and (min==0 or weight[i]<min):
+            letter = rebra[i][0]
+            min=weight[i]
+    stroka+=letter
+    sum+=min
+    min=0
+    print(sum)
+print(stroka,sum)
